@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escape Voz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+    }
+    .question-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ccc;
+      max-width: 500px;
+      margin: auto;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px auto;
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #progress {
+      margin: 20px 0;
+      font-size: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .train {
+      font-size: 30px;
+    }
+    #Objašnjenje {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚂 Escape Room: Vremenski Voz</h1>
+  <div id="progress">Epizoda 1 / 6</div>
+  <div class="train">🚂——⚪⚪⚪⚪⚪⚪</div>
+
+  <div class="question-box" id="quiz"></div>
+
+  
+  <div id="Objašnjenje"></div>
+
+  
+  <script>
+    const questions = [
+      {
+        title: "Epizoda 1: Pećinsko doba",
+        question: "Koji od ovih simbola najviše podseća na oblike koje su naši preci crtali u pećinama, kao prvi pokušaj apstraktnog razmišljanja?",
+        answers: ["🌀", "🔲", "🔵"],
+        correct: 0,
+        Objašnjenje: "Ovaj simbol 🌀 podseća na spirale koje su se često pojavljivale u pećinskim crtežima, a spirala je jedan od prvih apstraktnih oblika koje su naši preci crtali kao pokušaj da razumiju prirodu i svijet oko sebe."
+      },
+      {
+        title: "Epizoda 2: Stara Kina",
+        question: "Koji izum iz Stare Kine je omogućio lakše širenje informacija i širom svijeta",
+        answers: ["Baterija", "Papir", "Pismo u steni"],
+        correct: 1,
+        Objašnjenje: "Papir je izumljen u Staroj Kini i postao je ključan za razvoj pismenosti, jer je omogućio masovno štampanje i širenje informacija. Prije toga, ljudi su koristili svilu ili bambus za pisanje."
+      },
+      {
+        title: "Epizoda 3: Renesansa",
+        question: "Koji umjetnik je stvorio detaljne crteže anatomije ljudskog tijela, koji su pomogli u razvoju moderne medicine?",
+        answers: ["Leonardo da Vinci", "Michelangelo", "Galileo Galilei"],
+        correct: 0,
+        Objašnjenje: "Leonardo da Vinci je poznat po svojim crtežima ljudske anatomije, koji su pomogli lekarima i naučnicima da bolje razumiju ljudsko telo i time doprinosili razvoju medicine."
+      },
+      {
+        title: "Epizoda 4: Industrijska revolucija",
+        question: "Koji element industrijske revolucije je omogućio masovnu proizvodnju u fabrikama?",
+        answers: ["Generator", "Magnetna žica", "Parna mašina"],
+        correct: 2,
+        Objašnjenje: "Parna mašina je ključni izum industrijske revolucije, jer je omogućila masovnu proizvodnju u fabrikama, smanjujući potrebu za ljudskom snagom i povećavajući efikasnost proizvodnje."
+      },
+      {
+        title: "Epizoda 5: Savremeno doba",
+        question: "Koji fenomen u savremenom društvu opisuje problem s prekomjernim i nepovezanim informacijama?",
+        answers: ["Vještačka Inteligencija", "Preopterećenje informacijama", "Globalizacija tržišta"],
+        correct: 1,
+        Objašnjenje: "Preopterećenje informacijama je problem u savremenom društvu, gdje količina informacija koje imamo svakodnevno može biti zbunjujuća i teška za obradu, što može dovesti do smanjenja produktivnosti i kvaliteta života."
+      },
+      {
+        title: "Epizoda 6: Budućnost",
+        question: "Koji je najveći izazov u budućnosti kada je u pitanju razvoj tehnologije u kontekstu ljudskih vrijednosti?",
+        answers: ["Balans između etike i efikasnosti", "Povećanje produktivnosti", "Autonomija robota"],
+        correct: 0,
+        Objašnjenje: "Balans između etike i efikasnosti predstavlja najveći izazov u budućnosti, jer razvoj tehnologije mora da bude u skladu sa ljudskim vrednostima, kao što su poštovanje privatnosti i ljudskih prava."
+      }
+    ];
+
+    let current = 0;
+    const quiz = document.getElementById("quiz");
+    const progress = document.getElementById("progress");
+    const train = document.querySelector(".train");
+    const ObjašnjenjeBox = document.getElementById("Objašnjenje");
+
+    function showQuestion() {
+      const q = questions[current];
+      progress.textContent = `Epizoda ${current + 1} / ${questions.length}`;
+      train.textContent = "🚂" + "—".repeat(current) + "⚪".repeat(questions.length - current);
+
+      quiz.innerHTML = `
+        <h2>${q.title}</h2>
+        <p>${q.question}</p>
+        ${q.answers.map((ans, i) =>
+          `<button onclick="checkAnswer(${i})">${ans}</button>`).join("")}
+      `;
+      ObjašnjenjeBox.innerHTML = ""; 
+    }
+
+    function checkAnswer(i) {
+      const q = questions[current];
+      if (i === q.correct) {
+        current++;
+        if (current < questions.length) {
+          showQuestion();
+        } else {
+          showEnd();
+        }
+
+       
+        ObjašnjenjeBox.innerHTML = `
+          <p><strong>Objašnjenje:</strong> ${q.Objašnjenje}</p>
+        `;
+      } else {
+        ObjašnjenjeBox.innerHTML = `<p>Pogrešan odgovor, pokušaj ponovo!</p>`;
+      }
+    }
+
+    function showEnd() {
+      progress.textContent = "🚂 Voz je stigao!";
+      train.textContent = "🏁🏁🏁🏁🏁🏁";
+      quiz.innerHTML = `
+        <h2>Bravo! Stigli ste na kraj puta! 🎉</h2>
+        <p>Da li ste vi putnik ili stvaralac ideja?</p>
+      `;
+      ObjašnjenjeBox.innerHTML = "";
+    }
+
+    showQuestion();
+  </script>
+
+</body>
+</html>
