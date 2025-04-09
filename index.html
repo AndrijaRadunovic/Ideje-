@@ -7,12 +7,13 @@
   <style>
     body { 
       font-family: Arial, sans-serif; 
-      background: #f2f2f2;
+      background: url('https://assets.superhivemarket.com/store/product/182420/image/d7539d8f0e1f502d5e78b8b3c060c553.jpg') no-repeat center center fixed;
+      background-size: cover;
       text-align: center;
       padding: 20px;
     }
     .question-box {
-      background: white;
+      background: rgba(255, 255, 255, 0.5);
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px #ccc;
@@ -27,12 +28,12 @@
       font-size: 18px;
       border-radius: 8px;
       border: none;
-      background-color: #007bff;
+      background-color: #ec1b2d;
       color: white;
       cursor: pointer;
     }
     button:hover {
-      background-color: #0056b3;
+      background-color: #f70202;
     }
     #progress {
       margin: 20px 0;
@@ -47,7 +48,14 @@
     #Objašnjenje {
       margin-top: 20px;
       font-size: 18px;
-      color: #555;
+      color: #000000;
+      background: rgba(189, 21, 21, 0.7); /* light transparent background */
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -76,6 +84,7 @@
       {
         title: "Epizoda 2: Stara Kina",
         question: "Koji izum iz Stare Kine je omogućio lakše širenje informacija i širom svijeta",
+        image: "https://www.kew.org/sites/default/files/styles/social/public/2019-02/papermaking-japan.jpg.webp?itok=bh4NigZj", // ← paste image link here
         answers: ["Baterija", "Papir", "Pismo u steni"],
         correct: 1,
         Objašnjenje: "Papir je izumljen u Staroj Kini i postao je ključan za razvoj pismenosti, jer je omogućio masovno štampanje i širenje informacija. Prije toga, ljudi su koristili svilu ili bambus za pisanje."
@@ -84,19 +93,22 @@
         title: "Epizoda 3: Renesansa",
         question: "Koji umjetnik je stvorio detaljne crteže anatomije ljudskog tijela, koji su pomogli u razvoju moderne medicine?",
         answers: ["Leonardo da Vinci", "Michelangelo", "Galileo Galilei"],
+        image:"https://www.pbs.org/wgbh/nova/media/images/LeonardoHero.width-2000.jpg",
         correct: 0,
         Objašnjenje: "Leonardo da Vinci je poznat po svojim crtežima ljudske anatomije, koji su pomogli lekarima i naučnicima da bolje razumiju ljudsko telo i time doprinosili razvoju medicine."
       },
       {
         title: "Epizoda 4: Industrijska revolucija",
         question: "Koji element industrijske revolucije je omogućio masovnu proizvodnju u fabrikama?",
+        image:"https://cepr.org/sites/default/files/styles/16_9_small/public/voxeu-cover-image/Hartmann_Maschinenhalle_1868_%252801%2529.jpg?itok=dxF3XNKc",
         answers: ["Generator", "Magnetna žica", "Parna mašina"],
         correct: 2,
         Objašnjenje: "Parna mašina je ključni izum industrijske revolucije, jer je omogućila masovnu proizvodnju u fabrikama, smanjujući potrebu za ljudskom snagom i povećavajući efikasnost proizvodnje."
       },
       {
         title: "Epizoda 5: Savremeno doba",
-        question: "Koji fenomen u savremenom društvu opisuje problem s prekomjernim i nepovezanim informacijama?",
+        question: "Koji fenomen najbolje opisuje savremeni paradoks u kojem dostupnost ogromne količine podataka otežava fokus, analizu i donošenje smislenih zaključaka?",
+        image:"https://media.licdn.com/dms/image/v2/D4E12AQFvU5FU03s0VQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1691468178688?e=2147483647&v=beta&t=rK3SH903PYzBcBRDCsDwSQMBJTrw38g69CxtPaXRAMI",
         answers: ["Vještačka Inteligencija", "Preopterećenje informacijama", "Globalizacija tržišta"],
         correct: 1,
         Objašnjenje: "Preopterećenje informacijama je problem u savremenom društvu, gdje količina informacija koje imamo svakodnevno može biti zbunjujuća i teška za obradu, što može dovesti do smanjenja produktivnosti i kvaliteta života."
@@ -104,6 +116,7 @@
       {
         title: "Epizoda 6: Budućnost",
         question: "Koji je najveći izazov u budućnosti kada je u pitanju razvoj tehnologije u kontekstu ljudskih vrijednosti?",
+        image:"https://portlandai-autoblog-images.s3.us-west-2.amazonaws.com/1700733780528-8293242c3a444cc1bb24688a7fdbf25e.jpeg",
         answers: ["Balans između etike i efikasnosti", "Povećanje produktivnosti", "Autonomija robota"],
         correct: 0,
         Objašnjenje: "Balans između etike i efikasnosti predstavlja najveći izazov u budućnosti, jer razvoj tehnologije mora da bude u skladu sa ljudskim vrednostima, kao što su poštovanje privatnosti i ljudskih prava."
