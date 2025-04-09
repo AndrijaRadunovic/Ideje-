@@ -13,7 +13,7 @@
       padding: 20px;
     }
     .question-box {
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.35);
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px #ccc;
@@ -48,8 +48,8 @@
     #Objašnjenje {
       margin-top: 20px;
       font-size: 18px;
-      color: #000000;
-      background: rgba(189, 21, 21, 0.7); /* light transparent background */
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.6);
       padding: 15px;
       border-radius: 10px;
       max-width: 500px;
@@ -66,11 +66,8 @@
   <div class="train">🚂——⚪⚪⚪⚪⚪⚪</div>
 
   <div class="question-box" id="quiz"></div>
-
-  
   <div id="Objašnjenje"></div>
 
-  
   <script>
     const questions = [
       {
@@ -84,7 +81,7 @@
       {
         title: "Epizoda 2: Stara Kina",
         question: "Koji izum iz Stare Kine je omogućio lakše širenje informacija i širom svijeta",
-        image: "https://www.kew.org/sites/default/files/styles/social/public/2019-02/papermaking-japan.jpg.webp?itok=bh4NigZj", // ← paste image link here
+        image: "https://www.kew.org/sites/default/files/styles/social/public/2019-02/papermaking-japan.jpg.webp?itok=bh4NigZj",
         answers: ["Baterija", "Papir", "Pismo u steni"],
         correct: 1,
         Objašnjenje: "Papir je izumljen u Staroj Kini i postao je ključan za razvoj pismenosti, jer je omogućio masovno štampanje i širenje informacija. Prije toga, ljudi su koristili svilu ili bambus za pisanje."
@@ -107,7 +104,7 @@
       },
       {
         title: "Epizoda 5: Savremeno doba",
-        question: "Koji fenomen najbolje opisuje savremeni paradoks u kojem dostupnost ogromne količine podataka otežava fokus, analizu i donošenje smislenih zaključaka?",
+        question: "Koji fenomen najviše simbolizuje savremeni izazov gdje pretjerani dotok informacija zapravo može otežati donošenje odluka i fokusiranu analizu?",
         image:"https://media.licdn.com/dms/image/v2/D4E12AQFvU5FU03s0VQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1691468178688?e=2147483647&v=beta&t=rK3SH903PYzBcBRDCsDwSQMBJTrw38g69CxtPaXRAMI",
         answers: ["Vještačka Inteligencija", "Preopterećenje informacijama", "Globalizacija tržišta"],
         correct: 1,
@@ -141,25 +138,32 @@
         ${q.answers.map((ans, i) =>
           `<button onclick="checkAnswer(${i})">${ans}</button>`).join("")}
       `;
-      ObjašnjenjeBox.innerHTML = ""; 
+      ObjašnjenjeBox.innerHTML = "";
+      ObjašnjenjeBox.style.display = "block";
     }
 
     function checkAnswer(i) {
       const q = questions[current];
       if (i === q.correct) {
-        current++;
-        if (current < questions.length) {
-          showQuestion();
-        } else {
-          showEnd();
-        }
+        const buttons = quiz.querySelectorAll("button");
+        buttons.forEach(btn => btn.disabled = true);
 
-       
         ObjašnjenjeBox.innerHTML = `
           <p><strong>Objašnjenje:</strong> ${q.Objašnjenje}</p>
+          <button onclick="nextQuestion()">Dalje</button>
         `;
       } else {
         ObjašnjenjeBox.innerHTML = `<p>Pogrešan odgovor, pokušaj ponovo!</p>`;
+      }
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < questions.length) {
+        ObjašnjenjeBox.innerHTML = "";
+        showQuestion();
+      } else {
+        showEnd();
       }
     }
 
@@ -169,10 +173,9 @@
       quiz.innerHTML = `
         <h2>Bravo! Stigli ste na kraj puta. 🎉</h2>
         <p>Kontinuirani proces je ključ!!</p>
+       
       `;
       ObjašnjenjeBox.style.display = "none";
-      
-      
     }
 
     showQuestion();
