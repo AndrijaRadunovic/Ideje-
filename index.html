@@ -76,7 +76,7 @@
       {
         title: "Epizoda 1: Pećinsko doba",
         question: "Koji od ovih simbola najviše podseća na oblike koje su naši preci crtali u pećinama, kao prvi pokušaj apstraktnog razmišljanja?",
-        image: "https://www.bradshawfoundation.com/ancient_symbols_in_rock_art/photographs/newgrange.jpg",
+        image: "https://www.bradshawfoundation.com/ancient_symbols_in_rock_art/photographs/usaspiral1b.jpg",
         answers: ["🌀", "🔲", "🔵"],
         correct: 0,
         Objašnjenje: "Ovaj simbol 🌀 podseća na spirale koje su se često pojavljivale u pećinskim crtežima, a spirala je jedan od prvih apstraktnih oblika koje su naši preci crtali kao pokušaj da razumiju prirodu i svijet oko sebe."
@@ -168,9 +168,16 @@
       train.textContent = "🏁🏁🏁🏁🏁🏁";
       quiz.innerHTML = `
         <h2>Bravo! Stigli ste na kraj puta. 🎉</h2>
-        <p>Da li ste vi putnik ili stvaralac ideja?</p>
+        <p>Kontinuirani proces je ključ!</p>
       `;
-      ObjašnjenjeBox.innerHTML = "";
+      ObjašnjenjeBox.style.display = "none";
+      const finalImage = document.createElement("img");
+      finalImage.src = "https://sdmntpritalynorth.oaiusercontent.com/files/00000000-2aec-5246-8e07-4395f4d8ee2c/raw?se=2025-04-09T10%3A50%3A14Z&sp=r&sv=2024-08-04&sr=b&scid=a9f1ab40-46c8-506a-8af2-1a7c80aa4610&skoid=59d06260-d7df-416c-92f4-051f0b47c607&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-09T04%3A08%3A07Z&ske=2025-04-10T04%3A08%3A07Z&sks=b&skv=2024-08-04&sig=9cYDlmZ/6w9Z1rra6S0mNgPwUY7N5nk04my2gyQI7oM%3D"; 
+      finalImage.alt = "Kraj voza";
+      finalImage.style.maxWidth = "100%";
+      finalImage.style.marginTop = "20px";
+      quiz.appendChild(finalImage);
+      
     }
 
     showQuestion();
