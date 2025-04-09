@@ -68,6 +68,7 @@
       {
         title: "Epizoda 1: Pećinsko doba",
         question: "Koji od ovih simbola najviše podseća na oblike koje su naši preci crtali u pećinama, kao prvi pokušaj apstraktnog razmišljanja?",
+        image: "https://www.bradshawfoundation.com/ancient_symbols_in_rock_art/photographs/newgrange.jpg",
         answers: ["🌀", "🔲", "🔵"],
         correct: 0,
         Objašnjenje: "Ovaj simbol 🌀 podseća na spirale koje su se često pojavljivale u pećinskim crtežima, a spirala je jedan od prvih apstraktnih oblika koje su naši preci crtali kao pokušaj da razumiju prirodu i svijet oko sebe."
@@ -123,6 +124,7 @@
       quiz.innerHTML = `
         <h2>${q.title}</h2>
         <p>${q.question}</p>
+        ${q.image ? `<img src="${q.image}" alt="slika" style="max-width:100%; border-radius:10px; margin:15px 0;">` : ""}
         ${q.answers.map((ans, i) =>
           `<button onclick="checkAnswer(${i})">${ans}</button>`).join("")}
       `;
